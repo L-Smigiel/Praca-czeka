@@ -1,36 +1,17 @@
-document.addEventListener("onscroll", myFunction);
 function myFunction() {
-  const headerOverlay document.getElementById("site-header").appendChild(document.createElement('div'));
-  headerOverlay.classList.add("header-overlay")
+  const headerElement = document.getElementById("site-header")
+  const headerOverlay = headerElement.appendChild(document.createElement('div'));
+  headerOverlay.classList.add("header-overlay");
+}
+myFunction()
+
+const headerOverlay = document.querySelector(".header-overlay")
+const bodyGrab = document.querySelector("body");
+bodyGrab.addEventListener("onscroll", setOpacityIndicator());
+
+function setOpacityIndicator() {
+headerOverlay.style.opacity =+ 0.01;
 }
 
-document.getElementById("site-header");
-
-.nice-header {
-    position: relative;
-    height: 300px;
-    background: center center;
-    background-size: cover;
-    background-image: url(http://www.boeing.com/resources/boeingdotcom/commercial/787/assets/images/marquee-787.jpg);
-  }
-  
-  .header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0);
-    opacity: 0;
-  }
-
-  $(window).scroll(function() {
-    var scrollTop = $(this).scrollTop();
-  
-    $('.header-overlay').css({
-      opacity: function() {
-        var elementHeight = $(this).height();
-        return 1 - (elementHeight - scrollTop) / elementHeight;
-      }
-    });
-  });
+//to nie działa
+//użyj tego stary: https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll
